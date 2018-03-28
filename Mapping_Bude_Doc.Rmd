@@ -2,11 +2,13 @@
 title: "Mapping_Bude_Doc"
 author: "Michael Rojas"
 date: "3/22/2018"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # Western England Maps (Road, WaterColor) of Bude
-### Including Bude Itself, Cricket Grounds, Local Beaches, Tidal Swimming Pool, and Local Pub
+### Including Bude Itself, Cricket Grounds, Local Beaches, Tidal Swimming Pool, Local Pub, and Local Hotels
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo =TRUE)
@@ -32,13 +34,13 @@ library(maps)
 myDF <- data.frame(
   Points_Of_Interest = c(
     "Bude", "Summerleaze Beach", "Bude Tidal Swimming Pool",
-    "Crooklets Beach", "The Barrel at Bude", "Bude North Cornwall Cricket Club"
+    "Crooklets Beach", "The Barrel at Bude", "Bude North Cornwall Cricket Club", "An Mor", "The Edgcumbe"
   ),
 
-  longitude = c(-4.543678, -4.5513, -4.5540, -4.553762, -4.543023, -4.552814),
-  latitude = c(50.8261, 50.8305, 50.8326, 50.83587, 50.83007, 50.83347),
+  longitude = c(-4.543678, -4.5513, -4.5540, -4.553762, -4.543023, -4.552814, -4.546551, -4.548689),
+  latitude = c(50.8261, 50.8305, 50.8326, 50.83587, 50.83007, 50.83347, 50.8309, 50.83139),
 
-  Type = c("Bude", "Summerleaze Beach", "Tidal Swimming Pool", "Crooklets Beach", "Pub: The Barrel at Bude", "Cricket Grounds"),
+  Type = c("Bude", "Summerleaze Beach", "Tidal Swimming Pool", "Crooklets Beach", "Pub: The Barrel at Bude", "Cricket Grounds", "Hotel: An Mor", "Hotel: The Edgcumbe"),
   stringsAsFactors = FALSE
 )
 ```
@@ -96,7 +98,7 @@ ggmap(bude_map) +
   # Literal Plotted Points of Interest & Pub Route
   geom_point(data = myDF, aes(x = longitude, y = latitude, color = Type), size = 3) +
   geom_path(aes(x = lon, y = lat), colour = "red", size = 1.5, data = route_df, lineend = "round") +
-  scale_colour_manual(values = c("sienna2", "limegreen","steelblue4", "red4","steelblue3", "turquoise1"))
+  scale_colour_manual(values = c("sienna2", "limegreen","steelblue4", "red4","steelblue3", "turquoise1", "lightblue", "pink"))
 ```
 
 
@@ -159,6 +161,14 @@ More importantly, the Picnic at the Pool provided a wonderful opportunity for lo
 
 ![](http://budeandbeyond.co.uk/wp-content/uploads/2013/06/FoBSP-RobKeir-Picnic2-800x434.jpg)
 
+#Hotel: An Mor
+
+![](https://s-ec.bstatic.com/images/hotel/max1024x768/525/52523974.jpg)
+
+#Hotel: The Edgcumbe
+
+![](https://t-ec.bstatic.com/images/hotel/max1024x768/322/32218546.jpg)
+
 
 #### Possible Error that might come up for no reason:
 
@@ -187,5 +197,5 @@ ggmap(bude_Watermap) +
   # Literal Plotted Points of Interest & Pub Route
   geom_point(data = myDF, aes(x = longitude, y = latitude, color = Type), size = 3) +
   geom_path(aes(x = lon, y = lat), colour = "red", size = 1.5, data = route_df, lineend = "round") +
-  scale_colour_manual(values = c("sienna2", "limegreen","steelblue4", "red4","steelblue3", "turquoise1"))
+  scale_colour_manual(values = c("sienna2", "limegreen","steelblue4", "red4","steelblue3", "turquoise1", "lightblue", "pink"))
 ```

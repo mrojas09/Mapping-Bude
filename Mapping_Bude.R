@@ -13,7 +13,7 @@
 # GoogleKey wont work unless you get your own key.
 
 # Western England Maps (Road, WaterColor) of Bude
-# Including Bude Itself, cricket Grounds, Local Beaches, Tidal Swimming Pool, and Local Pub
+# Including Bude Itself, cricket Grounds, Local Beaches, Tidal Swimming Pool, Local Pub, and Local Hotels
 
 library(ggmap)
 library(ggplot2)
@@ -24,13 +24,13 @@ library(maps)
 myDF <- data.frame(
   Points_Of_Interest = c(
     "Bude", "Summerleaze Beach", "Bude Tidal Swimming Pool",
-    "Crooklets Beach", "The Barrel at Bude", "Bude North Cornwall Cricket Club"
+    "Crooklets Beach", "The Barrel at Bude", "Bude North Cornwall Cricket Club", "An Mor", "The Edgcumbe"
   ),
 
-  longitude = c(-4.543678, -4.5513, -4.5540, -4.553762, -4.543023, -4.552814),
-  latitude = c(50.8261, 50.8305, 50.8326, 50.83587, 50.83007, 50.83347),
+  longitude = c(-4.543678, -4.5513, -4.5540, -4.553762, -4.543023, -4.552814, -4.546551, -4.548689),
+  latitude = c(50.8261, 50.8305, 50.8326, 50.83587, 50.83007, 50.83347, 50.8309, 50.83139),
 
-  Type = c("Bude", "Summerleaze Beach", "Tidal Swimming Pool", "Crooklets Beach", "Pub: The Barrel at Bude", "Cricket Grounds"),
+  Type = c("Bude", "Summerleaze Beach", "Tidal Swimming Pool", "Crooklets Beach", "Pub: The Barrel at Bude", "Cricket Grounds", "Hotel: An Mor", "Hotel: The Edgcumbe"),
   stringsAsFactors = FALSE
 )
 
@@ -69,7 +69,7 @@ ggmap(bude_map) +
   # Literal Plotted Points of Interest & Pub Route
   geom_point(data = myDF, aes(x = longitude, y = latitude, color = Type), size = 3) +
   geom_path(data = route_df, aes(x = lon, y = lat), colour = "red", size = 1.5, lineend = "round") +
-  scale_colour_manual(values = c("sienna2", "limegreen","steelblue4", "red4","steelblue3", "turquoise1"))
+  scale_colour_manual(values = c("sienna2", "limegreen","steelblue4", "red4","steelblue3", "turquoise1", "lightblue", "pink"))
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -97,4 +97,4 @@ ggmap(bude_Watermap) +
   # Literal Plotted Points of Interest & Pub Route
   geom_point(data = myDF, aes(x = longitude, y = latitude, color = Type), size = 3) +
   geom_path(data = route_df, aes(x = lon, y = lat), colour = "red", size = 1.5, lineend = "round") +
-  scale_colour_manual(values = c("sienna2", "limegreen","steelblue4", "red4","steelblue3", "turquoise1"))
+  scale_colour_manual(values = c("sienna2", "limegreen","steelblue4", "red4","steelblue3", "turquoise1", "lightblue", "pink"))
